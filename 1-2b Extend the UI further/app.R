@@ -19,28 +19,32 @@ ui <- fluidPage(
       # Select variable for y-axis
       selectInput(inputId = "y", 
                   label = "Y-axis:",
-                  choices = c(___ = "imdb_rating", 
-                              ___ = "imdb_num_votes", 
-                              ___ = "critics_score", 
-                              ___ = "audience_score", 
-                              ___ = "runtime"), 
+                  choices = c("IMDB Ratings" = "imdb_rating", 
+                              "IMDB Number of Votes" = "imdb_num_votes", 
+                              "Critics Score" = "critics_score", 
+                              "Audience Score" = "audience_score", 
+                              "Runtime" = "runtime"), 
                   selected = "audience_score"),
       
       # Select variable for x-axis
       selectInput(inputId = "x", 
                   label = "X-axis:",
-                  choices = c(___ = "imdb_rating", 
-                              ___ = "imdb_num_votes", 
-                              ___ = "critics_score", 
-                              ___ = "audience_score", 
-                              ___ = "runtime"), 
+                  choices = c("IMDB Ratings" = "imdb_rating", 
+                              "IMDB Number of Votes" = "imdb_num_votes", 
+                              "Critics Score" = "critics_score", 
+                              "Audience Score" = "audience_score", 
+                              "Runtime" = "runtime"), 
                   selected = "critics_score"),
       
       # Select variable for color
       selectInput(inputId = "z", 
                   label = "Color:",
-                  choices = ___, 
-                  selected = ___)
+                  choices = c("Title type" = "title_type", 
+                  "Genre" = "genre", 
+                  "MPAA rating" = "mpaa_rating", 
+                  "Critics rating" = "critics_rating", 
+                  "Audience rating" = "audience_rating"), 
+                  selected = "mpaa_rating")
       
     ),
     

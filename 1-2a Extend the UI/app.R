@@ -29,10 +29,10 @@ ui <- fluidPage(
                   selected = "critics_score"),
       
       # Select variable for color
-      selectInput(inputId = "___", 
-                  label = "____",
-                  choices = c(___),
-                  selected = "___")
+      selectInput(inputId = "Z", 
+                  label = "Color by:",
+                  choices = c("title_type", "genre", "mpaa_rating", "critics_rating", "audience_rating"),
+                  selected = "mpaa_rating")
       
     ),
     
@@ -49,7 +49,7 @@ server <- function(input, output, session) {
   
   output$scatterplot <- renderPlot({
     ggplot(data = movies, aes_string(x = input$x, y = input$y,
-                                     color = ___)) +
+                                     color = input$z)) +
       geom_point()
   })
   

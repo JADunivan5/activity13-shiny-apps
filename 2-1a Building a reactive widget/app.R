@@ -26,10 +26,10 @@ ui <- fluidPage(
                   selected = "critics_score"),
       
       # Set alpha level
-      sliderInput(inputId = ___, 
-                  label = ___, 
-                  min = ___, max = ___, 
-                  value = ___)
+      sliderInput(inputId = "alpha", 
+                  label = "Alpha:", 
+                  min = 0, max = 1, 
+                  value = 0.5)
     ),
     
     mainPanel(
@@ -44,7 +44,7 @@ server <- function(input, output, session) {
   
   output$scatterplot <- renderPlot({
     ggplot(data = movies, aes_string(x = input$x, y = input$y)) +
-      geom_point(alpha = ___)
+      geom_point(alpha = input$alpha)
   })
   
 }

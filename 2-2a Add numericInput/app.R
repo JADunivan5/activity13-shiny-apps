@@ -8,6 +8,7 @@ library(DT)
 # Load data --------------------------------------------------------------------
 
 load("movies.RData")
+n_total<- nrow(movies)
 
 # Define UI --------------------------------------------------------------------
 
@@ -17,11 +18,13 @@ ui <- fluidPage(
     
     sidebarPanel(
       
-      HTML(paste("Enter a value between 1 and", "651"))
+      HTML(paste("Enter a value between 1 and", n_total)),
       
       numericInput(inputId = "n",
-                   value = 3,
-                   step = 10)
+                   label = "Sample size:",
+                   min = 1, max = n_total, 
+                   value = 30,
+                   step = 1)
       
     ),
     

@@ -22,10 +22,11 @@ ui <- fluidPage(
       
       br(), br(),
       
-      dateInput(inputId = "date",
+      dateRangeInput(inputId = "date",
                 label = "Select date:",
-                value = "2013-01-01",
-                min = min_date, max = max_date)
+                start = "2013-01-01", end = "2014-01-01",
+                min = min_date, max = max_date,
+                startview = "year")
     ),
     
     mainPanel(
@@ -39,6 +40,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   
   output$scatterplot <- renderPlot({
+    req(input$date)
     movies_selected_date <- movies %>%
       filter(thtr_rel_date >= as.POSIXct(input$date))
     ggplot(data = movies_selected_date, aes(x = critics_score, y = audience_score, color = mpaa_rating)) +

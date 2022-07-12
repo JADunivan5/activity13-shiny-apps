@@ -38,6 +38,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   
   output$moviestable <- DT::renderDataTable({
+    req(input$n)
     movies_sample <- movies %>%
       sample_n(input$n) %>%
       select(title:studio)

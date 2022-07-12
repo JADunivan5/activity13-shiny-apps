@@ -19,7 +19,8 @@ ui <- fluidPage(
       selectInput(inputId = "studio",
                   label = "Select studio:",
                   choices = all_studios,
-                  selected = "20th Century Fox")
+                  selected = "20th Century Fox",
+                  multiple = TRUE)
       
     ),
     
@@ -34,6 +35,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   
   output$moviestable <- renderDataTable({
+    req(input$studio)
     movies_from_selected_studios <- movies %>%
       filter(studio == input$studio) %>%
       select(title:studio)
